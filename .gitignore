@@ -1,0 +1,10 @@
+# Project exclude paths
+*.env
+/node_modules/
+/.idea/
+/dist/
+globalConfig.json
+users-db-repository.test.ts
+users-service.test.ts
+jest.config.js
+/globalConfig.json

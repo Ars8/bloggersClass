@@ -1,0 +1,16 @@
+import mongoose  from 'mongoose';
+import {Last10secReq} from "../types/types";
+
+
+const UsersIPLast10secCollectionRegConfSchema = new mongoose.Schema({
+  ip: {
+    type: String,
+    required: [true, 'ip is required']
+  },
+  createdAt: {
+    type: String,
+    required: [true, 'createdAt is required']
+  }
+})
+
+export const MyModeLast10secRegConf = mongoose.model<Last10secReq>("usersIPLast10secCollectionRegConfSchema", UsersIPLast10secCollectionRegConfSchema, "Last10secRegConf")
