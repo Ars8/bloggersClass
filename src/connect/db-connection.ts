@@ -1,13 +1,9 @@
-const ck = require('ckey')
 import mongoose from 'mongoose'
-
-const dbUrl = ck.ATLAS_URI
-const dbName = ck.HEROKU_DATABASE
 
 // connect by mongoose
 export async function runDb() {
   try {
-    await mongoose.connect(dbUrl + "/" + dbName)
+    await mongoose.connect(process.env.ATLAS_URI || "")
     console.log("Connected successfully to server :)")
 
   } catch (e) {
