@@ -64,13 +64,13 @@ export class JWTService {
         !await jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY) ||
         await ioc.blackListRefreshTokenJWTRepository.findJWT(refreshToken)
       ) {
-        return res.sendStatus(402)
+        return res.sendStatus(401)
       }
       next()
       return
     } catch (e: any) {
       console.log("Error:", e.message + ". ")
-      return res.sendStatus(403)
+      return res.sendStatus(401)
     }
   }
 
