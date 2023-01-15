@@ -5,14 +5,12 @@ import {
   UserType
 } from "../types/types";
 
-const ck = require('ckey')
-
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: ck.NODEMAILER_EMAIL,
-    pass: ck.NODEMAILER_APP_PASSWORD
+    user: process.env.NODEMAILER_EMAIL,
+    pass: process.env.NODEMAILER_APP_PASSWORD
   }
 });
 
@@ -21,7 +19,7 @@ export class EmailsAdapter {
 
   async sendCodeByRegistration(emailAndCode: EmailConfirmCodeType) {
     return await transporter.sendMail({
-      from: 'Email confirmation message <ck.NODEMAILER_EMAIL>',
+      from: 'Email confirmation message <process.env.NODEMAILER_EMAIL>',
       to: emailAndCode.email,
       subject: "Registration by confirmation code",
       html: `
@@ -33,7 +31,7 @@ export class EmailsAdapter {
 
   async sendCodeByPasswordRecovery(emailAndCode: EmailRecoveryCodeType) {
     return await transporter.sendMail({
-      from: 'Ars Nodemailer <ck.NODEMAILER_EMAIL>',
+      from: 'Ars Nodemailer <process.env.NODEMAILER_EMAIL>',
       to: emailAndCode.email,
       subject: "Password recovery by recoveryCode",
       html:
@@ -48,7 +46,7 @@ export class EmailsAdapter {
 
   async sendCodeByRecoveryPassword(user: UserType, token: string) {
     return await transporter.sendMail({
-      from: 'Ars Nodemailer <ck.NODEMAILER_EMAIL>',
+      from: 'Ars Nodemailer <process.env.NODEMAILER_EMAIL>',
       to: user.accountData.email,
       subject: "Recover password",
       html: `
@@ -60,7 +58,7 @@ export class EmailsAdapter {
 
   async sendEmail(email: string, subject: string, text: string) {
     return await transporter.sendMail({
-      from: 'Ars Nodemailer <ck.NODEMAILER_EMAIL>',
+      from: 'Ars Nodemailer <process.env.NODEMAILER_EMAIL>',
       to: email,
       subject: subject,
       html: text
