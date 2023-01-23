@@ -64,6 +64,7 @@ export class JWTService {
         !await jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY) ||
         await ioc.blackListRefreshTokenJWTRepository.findJWT(refreshToken)
       ) {
+        console.log(ck.REFRESH_SECRET_KEY)
         return res.sendStatus(401)
       }
       next()
