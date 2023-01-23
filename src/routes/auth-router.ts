@@ -1,4 +1,5 @@
 import {Router, Request, Response} from "express";
+import jwt from 'jsonwebtoken'
 import {ioc} from "../IoCContainer";
 import requestIp from 'request-ip';
 import {
@@ -12,6 +13,8 @@ import {
   recoveryCodeValidation
 } from "../middlewares/input-validator-middleware";
 import {PayloadType} from "../types/types";
+
+const ck = require('ckey')
 
 export const   authRouter = Router({})
 
