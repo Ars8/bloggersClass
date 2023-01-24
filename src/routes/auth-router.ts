@@ -68,7 +68,7 @@ authRouter.post('/refresh-token',
       const newPayload: PayloadType = ioc.jwtService.jwt_decode(newRefreshToken)
       await ioc.securityDevicesService.updateDevices(currentPayload, newPayload, clientIp, userAgent)
 
-      res.cookie("refreshToken", newRefreshToken, {httpOnly: true, secure: true} )
+      res.cookie("refreshToken", newRefreshToken)
       res.status(200).send({accessToken: newAccessToken})
       return
 
