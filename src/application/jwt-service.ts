@@ -59,13 +59,22 @@ export class JWTService {
   async verifyRefreshTokenAndCheckInBlackList(req: Request, res: Response, next: NextFunction) {
     try {
       const refreshToken = req.cookies.refreshToken
-      if (!refreshToken) return res.sendStatus(401)
+      if (!refreshToken) {
+        console.log("Refresh token")
+        return res.sendStatus(401)
+      }      
 
       const jwtPayload = await jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY)
-      if (!jwtPayload) return res.sendStatus(401)
+      if (!jwtPayload) {
+        console.log("jwtPayload")
+        return res.sendStatus(401)
+      }
 
       const isTokenBlocked = await ioc.blackListRefreshTokenJWTRepository.findJWT(refreshToken)
-      if(isTokenBlocked) return res.sendStatus(401)
+      if(isTokenBlocked) {
+        console.log("isTokenBlocked")
+        return res.sendStatus(401)
+      }
 
       return next()
     } catch (e: any) {
