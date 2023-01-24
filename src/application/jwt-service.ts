@@ -59,24 +59,31 @@ export class JWTService {
   async verifyRefreshTokenAndCheckInBlackList(req: Request, res: Response, next: NextFunction) {
     try {
       const refreshToken = req.cookies.refreshToken
-      if (
-        !refreshToken ||
-        !await jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY) ||
-        await ioc.blackListRefreshTokenJWTRepository.findJWT(refreshToken)
-      ) {
-        console.log(refreshToken)
-        return res.sendStatus(402)
-      }
-      next()
-      return
+      if (!refreshToken) return res.sendStatus(401)
+
+      const jwtPayload = await jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY)
+      if (!jwtPayload) return res.sendStatus(401)
+
+      const isTokenBlocked = await ioc.blackListRefreshTokenJWTRepository.findJWT(refreshToken)
+      if(isTokenBlocked) return res.sendStatus(401)
+
+      return next()
     } catch (e: any) {
-      console.log("Error:", e.message + ". ")
-      return res.sendStatus(403)
+      return res.sendStatus(401)
     }
   }
 
   jwt_decode(token: string): PayloadType {
     return jwt_decode(token)
   }
+
+  /* verifyRefreshToken (refreshToken: string) {
+    try {
+      const jwtPayload = jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY)
+      return jwtPayload
+    }
+    catch (e) {}
+      return null
+  } */
 }
 
