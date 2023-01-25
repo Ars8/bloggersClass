@@ -41,6 +41,9 @@ authRouter.post('/login',
 
       await ioc.securityDevicesService.createDevices(newPayload, clientIp, userAgent)
 
+
+      console.log('auth => login => tokens', refreshToken, accessToken);
+      
       res.cookie("refreshToken", refreshToken, {httpOnly: true, secure: true})
       return res.status(200).send({
         "accessToken": accessToken
