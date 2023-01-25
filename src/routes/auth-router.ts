@@ -204,7 +204,7 @@ authRouter.post('/registration-email-resending',
   });
 
 authRouter.post('/logout',
-  ioc.jwtService.verifyRefreshTokenAndCheckInBlackList,
+ioc.authMiddl.verifyRefreshTokenAndCheckInBlackList,
   async (req: Request, res: Response) => {
     const refreshToken = req.cookies.refreshToken
     const payload: PayloadType = ioc.jwtService.jwt_decode(refreshToken);
