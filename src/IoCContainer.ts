@@ -35,6 +35,7 @@ import {UsersIPLast10secRepositories} from "./repositories/usersIPlast10sec-db-r
 import {EmailsRepository} from "./repositories/emails-db-repository";
 import {EmailsSender} from "./demons/emailSender";
 import {EmailsAdapter} from "./adapters/email-adapter";
+import { authMiddleware } from "./middlewares/authMiddleware";
 
 // Users
 const usersRepository = new UsersRepository()
@@ -42,6 +43,7 @@ const usersService = new UsersService(usersRepository)
 const usersController = new UsersController(usersService)
 // Middleware
 const auth = new Auth()
+const authMiddl = new authMiddleware()
 const parseQuery = new ParseQuery()
 const validateLast10secReq = new ValidateLast10secReq()
 // Posts
@@ -112,5 +114,6 @@ export const ioc = {
   emailsAdapter: emailsAdapter,
   clearingIpWithCreatedAtOlder10Sec: clearingIpWithCreatedAtOlder10Sec,
   clearingInvalidJWTFromBlackList: clearingInvalidJWTFromBlackList,
-  clearingDevicesWithExpDate: clearingDevicesWithExpDate
+  clearingDevicesWithExpDate: clearingDevicesWithExpDate,
+  authMiddl: authMiddl
 }

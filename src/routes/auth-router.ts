@@ -53,7 +53,7 @@ authRouter.post('/login',
   })
 
 authRouter.post('/refresh-token',
-  ioc.jwtService.verifyRefreshTokenAndCheckInBlackList,
+  ioc.authMiddl.verifyRefreshTokenAndCheckInBlackList,
   async (req: Request, res: Response) => {
     try {
       const clientIp = requestIp.getClientIp(req);

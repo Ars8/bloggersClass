@@ -56,7 +56,7 @@ export class JWTService {
     }
   }
 
-  async verifyRefreshTokenAndCheckInBlackList(req: Request, res: Response, next: NextFunction) {
+  /*async verifyRefreshTokenAndCheckInBlackList(req: Request, res: Response, next: NextFunction) {
     try {
       const refreshToken = req.cookies.refreshToken
       if (!refreshToken) {
@@ -80,19 +80,19 @@ export class JWTService {
     } catch (e: any) {
       return res.sendStatus(401)
     }
-  }
+  }*/
 
   jwt_decode(token: string): PayloadType {
     return jwt_decode(token)
   }
 
-  /* verifyRefreshToken (refreshToken: string) {
+  verifyRefreshToken (refreshToken: string) {
     try {
       const jwtPayload = jwt.verify(refreshToken, ck.REFRESH_SECRET_KEY)
       return jwtPayload
     }
     catch (e) {}
       return null
-  } */
+  }
 }
 
