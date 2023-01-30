@@ -17,13 +17,15 @@ const CommentsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'content is required']
       },
-      userId: {
-        type: String,
-        required: [true, 'userId is required']
-      },
-      userLogin: {
-        type: String,
-        required: [true, 'userLogin is required']
+      comentatorInfo: {
+        userId: {
+          type: String,
+          required: [true, 'userId is required']
+        },
+        userLogin: {
+          type: String,
+          required: [true, 'userLogin is required']
+        }
       },
       createdAt: {
         type: String,
