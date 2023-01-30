@@ -17,7 +17,7 @@ const CommentsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'content is required']
       },
-      comentatorInfo: {
+      commentatorInfo: {
         userId: {
           type: String,
           required: [true, 'userId is required']
