@@ -116,12 +116,31 @@ export type CommentType = {
     myStatus: string
   }
 }
+export type CommentType1 = {
+  id: string
+  content: string
+  commentatorInfo: {
+    userId: string
+    userLogin: string
+  }  
+  createdAt: string
+  likesInfo: {
+    likesCount: number
+    dislikesCount: number
+    myStatus: string
+  }
+}
 export type CommentsTypeModel = {
   postId: string
   allComments: CommentType[]
 }
 export type ReturnObjCommentType = {
   data: CommentType | null
+  errorsMessages: ErrorType[]
+  resultCode: number
+}
+export type ReturnObjCommentType1 = {
+  data: CommentType1 | null
   errorsMessages: ErrorType[]
   resultCode: number
 }
