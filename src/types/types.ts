@@ -104,7 +104,7 @@ export type ReturnObjPostType = {
   resultCode: number
 }
 //...............................................Comments
-export type CommentType = {
+/* export type CommentType = {
   id: string
   content: string
   userId: string
@@ -115,8 +115,8 @@ export type CommentType = {
     dislikesCount: number
     myStatus: string
   }
-}
-export type CommentType1 = {
+} */
+export type CommentType = {
   id: string
   content: string
   commentatorInfo: {
@@ -134,13 +134,13 @@ export type CommentsTypeModel = {
   postId: string
   allComments: CommentType[]
 }
-export type ReturnObjCommentType = {
+/* export type ReturnObjCommentType = {
   data: CommentType | null
   errorsMessages: ErrorType[]
   resultCode: number
-}
-export type ReturnObjCommentType1 = {
-  data: CommentType1 | null
+} */
+export type ReturnObjCommentType = {
+  data: CommentType | null
   errorsMessages: ErrorType[]
   resultCode: number
 }

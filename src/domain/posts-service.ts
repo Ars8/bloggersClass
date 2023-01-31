@@ -3,7 +3,6 @@ import {
   Pagination,
   PostsType,
   ReturnObjCommentType,
-  ReturnObjCommentType1,
   ReturnObjPostType, SortOrder,
   UserType
 } from "../types/types";
@@ -22,7 +21,7 @@ export class PostsService {
     return await this.postsRepository.createPost(title, shortDescription, content, blogId)
   }
 
-  async createNewCommentByPostId(postId: string, content: string, user: UserType): Promise<ReturnObjCommentType1> {
+  async createNewCommentByPostId(postId: string, content: string, user: UserType): Promise<ReturnObjCommentType> {
     return await this.postsRepository.createNewCommentByPostId(postId, content, user)
   }
 

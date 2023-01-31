@@ -10,7 +10,6 @@ import {
   Pagination,
   PostsType,
   ReturnObjCommentType,
-  ReturnObjCommentType1,
   ReturnObjPostType, SortOrder,
   UserType
 } from "../types/types";
@@ -118,7 +117,7 @@ export class PostsRepository {
     }
   }
 
-  async createNewCommentByPostId(postId: string, content: string, user: UserType): Promise<ReturnObjCommentType1> {
+  async createNewCommentByPostId(postId: string, content: string, user: UserType): Promise<ReturnObjCommentType> {
     try {
       let errorsArray: ArrayErrorsType = [];
 

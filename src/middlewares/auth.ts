@@ -139,7 +139,7 @@ export class Auth {
       const foundPostWithComments = await ioc.commentsService.findCommentCompareOwner(commentId)
 
       if (foundPostWithComments) {
-        if (foundPostWithComments.userId === userId && foundPostWithComments.userLogin === userLogin) {
+        if (foundPostWithComments.commentatorInfo.userId === userId && foundPostWithComments.commentatorInfo.userLogin === userLogin) {
           next()
           return
         }
