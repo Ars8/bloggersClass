@@ -63,6 +63,7 @@ export class PreparationPosts {
         .limit(3)
       filledPosts.push(currentPost)
     }
+    console.log(filledPosts)    
     return filledPosts
   }
 }
