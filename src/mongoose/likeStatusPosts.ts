@@ -3,6 +3,10 @@ import {likeStatusPostsIdType} from "../types/types";
 
 
 const LikeStatusPostsIdSchema = new mongoose.Schema({
+  addedAt: {
+    type: String,
+    required: [true, 'addedAt is required']
+  },
   postId: {
     type: String,
     required: [true, 'postId is required'],
@@ -18,10 +22,6 @@ const LikeStatusPostsIdSchema = new mongoose.Schema({
   likeStatus: {
     type: String,
     required: [true, 'likeStatus is required']
-  },
-  addedAt: {
-    type: String,
-    required: [true, 'addedAt is required']
   }
 })
 
