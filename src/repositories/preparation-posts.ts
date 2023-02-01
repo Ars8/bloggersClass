@@ -62,8 +62,8 @@ export class PreparationPosts {
         .sort({addedAt: -1})
         .limit(3)
       filledPosts.push(currentPost)
-    }
-    console.log(filledPosts)    
+      console.log(currentPost.extendedLikesInfo.newestLikes)
+    }    
     return filledPosts
   }
 }
