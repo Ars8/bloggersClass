@@ -57,10 +57,13 @@ export class PreparationPosts {
           _id: false,
           __v: false,
           postId: false,
-          likeStatus: false
+          addedAt: false,
+          likeStatus: false          
         })
         .sort({addedAt: -1})
         .limit(3)
+        console.log(currentPost.extendedLikesInfo.newestLikes)
+        
       filledPosts.push(currentPost)
     }    
     return filledPosts
