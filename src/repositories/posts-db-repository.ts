@@ -41,6 +41,8 @@ export class PostsRepository {
       .skip(startIndex)
       .sort({[field]: direction}).lean()
 
+    console.log(findAllPosts)    
+
     const filledPost = await ioc.preparationPostsForReturn.preparationPostsForReturn(findAllPosts, currentUser)
 
     const totalCount = await MyModelPosts.countDocuments({})
