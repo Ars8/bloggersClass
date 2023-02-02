@@ -57,7 +57,6 @@ export class PreparationPosts {
           _id: false,
           __v: false,
           postId: false,
-          addedAt: false,
           likeStatus: false          
         })
         .sort({addedAt: -1})
