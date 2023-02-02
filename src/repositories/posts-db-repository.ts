@@ -327,7 +327,7 @@ export class PostsRepository {
         },
         {
           postId: postId,
-          userId: user.accountData.id,
+          userId: userId,
           login: user.accountData.login,
           likeStatus: likeStatus,
           addedAt: addedAt,
