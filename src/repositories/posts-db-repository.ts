@@ -330,7 +330,7 @@ export class PostsRepository {
           userId: userId,
           login: user.accountData.login,
           likeStatus: likeStatus,
-          addedAt: addedAt,
+          addedAt: new Date().toISOString(),
         },
         {upsert: true}
       ).lean()
