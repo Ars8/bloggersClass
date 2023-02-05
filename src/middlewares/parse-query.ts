@@ -16,6 +16,7 @@ export class ParseQuery {
     let confirmationCode: string | undefined | null = req.query.confirmationCode?.toString()
     let sortBy: string | undefined | null = req.query.sortBy?.toString()
     let querySortDirection: any = req.query.sortDirection
+  
 
 
     // default settings for searchNameTer, title, pageNumber, pageSize
@@ -54,12 +55,12 @@ export class ParseQuery {
     }
 
     const sortOrderArr = [-1, 1, 'descending', 'desc', 'ascending', 'asc']
-    let sortDirection: SortOrder = 1;
+    let sortDirection: SortOrder = -1;
     if (sortOrderArr.includes(querySortDirection)) {
       sortDirection = querySortDirection;
     }
-    if (Number(querySortDirection) === -1) {
-      sortDirection = -1;
+    if (Number(querySortDirection) === 1) {
+      sortDirection = 1;
     }
 
     return {

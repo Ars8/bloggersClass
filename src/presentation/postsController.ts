@@ -8,6 +8,7 @@ export class PostsController {
   }
 
   async getAllPosts(req: Request, res: Response) {
+    
 
     const parseQueryData = await ioc.parseQuery.parse(req)
     const pageNumber: number = parseQueryData.pageNumber

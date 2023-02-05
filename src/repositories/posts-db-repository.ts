@@ -24,11 +24,14 @@ export class PostsRepository {
 
   async findPosts(pageNumber: number, pageSize: number, sortBy: string | null, sortDirection: SortOrder, currentUser: UserType | null): Promise<Pagination> {
     const direction = sortDirection;
+    
+    console.log(sortBy, sortDirection);
 
     let field = "createdAt"
-    if (sortBy === "title" || sortBy === "shortDescription" || sortBy === "blogId" || sortBy === "blogName" || sortBy === "content" || sortBy === "blogName") {
+    if (sortBy === "title" || sortBy === "shortDescription" || sortBy === "blogId" || sortBy === "blogName" || sortBy === "content") {
       field = sortBy
     }
+    
 
     const startIndex = (pageNumber - 1) * pageSize
     const findAllPosts = await MyModelPosts.find(
